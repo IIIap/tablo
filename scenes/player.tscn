@@ -33,6 +33,5 @@ shape = SubResource("RectangleShape2D_dqkch")
 one_shot = true
 
 [node name="Camera" type="Camera2D" parent="."]
-enabled = false
 
 [connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
