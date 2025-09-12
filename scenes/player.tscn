@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck02nn6shcdor"]
+
+[ext_resource type="Script" uid="uid://bhix8uskial3v" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/Spritesheet/sheet_tanks.png" id="2_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(69, 64)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 10
+script = ExtResource("1_qhqgy")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_qhqgy")
+region_enabled = true
+region_rect = Rect2(159, 573, 78, 82)
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("2_qhqgy")
+offset = Vector2(20, 0)
+region_enabled = true
+region_rect = Rect2(404, 835, 50, 14)
+
+[node name="Marker" type="Marker2D" parent="Turret"]
+position = Vector2(47, 0)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="TurretTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Camera" type="Camera2D" parent="."]
+enabled = false
+
+[connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]

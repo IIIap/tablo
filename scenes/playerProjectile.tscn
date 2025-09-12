@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://3h8u3dbmh1d7"]
+
+[ext_resource type="PackedScene" uid="uid://dypr6u7mskxcj" path="res://scenes/projectile.tscn" id="1_w15xf"]
+[ext_resource type="Script" uid="uid://b1qbklij638lk" path="res://scripts/player_projectile.gd" id="2_h1u43"]
+[ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/Spritesheet/sheet_tanks.png" id="2_uhrfb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1u43"]
+size = Vector2(27, 16)
+
+[node name="playerProjectile" instance=ExtResource("1_w15xf")]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("2_h1u43")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_uhrfb")
+region_enabled = true
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_h1u43")
