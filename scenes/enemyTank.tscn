@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dii3cmd0dntkw"]
+
+[ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_aa236"]
+[ext_resource type="Script" uid="uid://b3ty7ncxb4njo" path="res://scripts/enemyTank.gd" id="2_ua1er"]
+
+[node name="EnemyTank" instance=ExtResource("1_aa236")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_ua1er")
+
+[node name="Body" parent="." index="0"]
+region_rect = Rect2(356, 506, 78, 82)
+
+[node name="Turret" parent="." index="3"]
+region_rect = Rect2(404, 851, 49, 14)

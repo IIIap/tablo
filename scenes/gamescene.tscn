@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://81116yweiywa"]
+[gd_scene load_steps=3 format=3 uid="uid://81116yweiywa"]
 
-[ext_resource type="PackedScene" uid="uid://ck02nn6shcdor" path="res://scenes/player.tscn" id="1_32cxx"]
+[ext_resource type="PackedScene" uid="uid://fd4mywr87lmh" path="res://scenes/playerTank.tscn" id="1_32cxx"]
+[ext_resource type="PackedScene" uid="uid://dii3cmd0dntkw" path="res://scenes/enemyTank.tscn" id="2_40k76"]
 
 [node name="Gamescene" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_32cxx")]
+[node name="PlayerTank" parent="." instance=ExtResource("1_32cxx")]
+collision_mask = 1
+
+[node name="EnemyTank" parent="." instance=ExtResource("2_40k76")]
+position = Vector2(223, -5)

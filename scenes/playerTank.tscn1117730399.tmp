@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://fd4mywr87lmh"]
+
+[ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_6jfsc"]
+
+[node name="PlayerTank" instance=ExtResource("1_6jfsc")]
+
+[node name="Camera" type="Camera2D" parent="." index="5"]

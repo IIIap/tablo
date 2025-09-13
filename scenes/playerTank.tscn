@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://fd4mywr87lmh"]
+
+[ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_6jfsc"]
+[ext_resource type="Script" uid="uid://bossl16tipdwi" path="res://scripts/playerTank.gd" id="2_o2m8q"]
+[ext_resource type="PackedScene" uid="uid://3h8u3dbmh1d7" path="res://scenes/playerProjectile.tscn" id="3_sjs61"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w231l"]
+size = Vector2(70, 74)
+
+[node name="PlayerTank" instance=ExtResource("1_6jfsc")]
+collision_layer = 1
+collision_mask = 6
+script = ExtResource("2_o2m8q")
+projectile_scene = ExtResource("3_sjs61")
+
+[node name="Collision" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_w231l")
+
+[node name="Marker" parent="Turret" index="0"]
+position = Vector2(48, -1)
+
+[node name="Camera" type="Camera2D" parent="." index="5"]

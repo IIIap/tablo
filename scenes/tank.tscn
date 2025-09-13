@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://hqlgolmy2o8i"]
+
+[ext_resource type="Script" uid="uid://dy1s0hpux2nxq" path="res://scripts/tank.gd" id="1_qrxud"]
+[ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/Spritesheet/sheet_tanks.png" id="2_c4xvs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01nm4"]
+size = Vector2(70, 73)
+
+[node name="Tank" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qrxud")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_c4xvs")
+region_enabled = true
+region_rect = Rect2(159, 573, 78, 82)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_01nm4")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="HurtBox"]
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("2_c4xvs")
+offset = Vector2(20, 0)
+region_enabled = true
+region_rect = Rect2(404, 835, 50, 14)
+
+[node name="Marker" type="Marker2D" parent="Turret"]
+position = Vector2(47, 0)
+
+[node name="TurretTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
