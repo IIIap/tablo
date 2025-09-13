@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://81116yweiywa"]
+[gd_scene load_steps=4 format=3 uid="uid://81116yweiywa"]
 
 [ext_resource type="PackedScene" uid="uid://fd4mywr87lmh" path="res://scenes/playerTank.tscn" id="1_32cxx"]
 [ext_resource type="PackedScene" uid="uid://dii3cmd0dntkw" path="res://scenes/enemyTank.tscn" id="2_40k76"]
+[ext_resource type="PackedScene" uid="uid://daf0ccf1ketnd" path="res://scenes/tile_map_layer.tscn" id="3_dylta"]
 
 [node name="Gamescene" type="Node2D"]
 
@@ -10,3 +11,6 @@ collision_mask = 1
 
 [node name="EnemyTank" parent="." instance=ExtResource("2_40k76")]
 position = Vector2(223, -5)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("3_dylta")]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0)

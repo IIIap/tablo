@@ -18,10 +18,7 @@ func control(delta: float):
 	rotation += rotation_input * delta
 func shoot():
 	if Input.is_action_just_pressed("shoot"):
-		if can_shoot:
-			can_shoot = false
-			$TurretTimer.start(turret_timer)
-			var projectile_instance = projectile_scene.instantiate()
-			projectile_instance.position = $Turret/Marker.global_position
-			projectile_instance.rotation = rotation + $Turret.rotation
-			get_tree().get_root().add_child(projectile_instance)
+		super.shoot()
+
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)

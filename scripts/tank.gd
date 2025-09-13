@@ -25,13 +25,19 @@ func control(delta: float):
 	pass
 	
 func shoot():
-	pass
+	if can_shoot and is_instance_valid(projectile_scene):
+		can_shoot = false
+		$TurretTimer.start(turret_timer)
+		var projectile_instance = projectile_scene.instantiate()
+		projectile_instance.position = $Turret/Marker.global_position
+		projectile_instance.rotation = rotation + $Turret.rotation
+		get_tree().get_root().add_child(projectile_instance)
 	
 func die():
 	queue_free()
 	
-func _process(delta: float) -> void:
-		turret(delta)
-		control(delta)
-		shoot()
-		move_and_slide()
+func _physics_process(delta: float) -> void:
+	turret(delta)
+	control(delta)
+	shoot()
+	move_and_collide(velocity * delta)
