@@ -1,7 +1,10 @@
 extends CharacterBody2D
+
+const MAX_HEALTH = 6.0
+
 @export var speed = 300
 @export var backward_multiplier = 0.7
-@export var health = 6.0
+@export var health = MAX_HEALTH
 @export var turret_timer = 0.4
 @export var flash_timer = 0.1
 @export var turret_rotation_speed = 5.00

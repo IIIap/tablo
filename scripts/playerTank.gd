@@ -1,5 +1,16 @@
 extends "res://scripts/tank.gd"
 
+signal health_changed(health: float)
+signal max_health(max_health: float)
+
+func _ready() -> void:
+	super._ready()
+	emit_signal("max_health", MAX_HEALTH)
+
+func take_damage(amount: float):
+	super.take_damage(amount)
+	emit_signal("health_changed", health)
+	
 func turret(delta: float):
 	$Turret.rotation += clamp(get_angle_to(get_global_mouse_position()) - $Turret.rotation, -turret_rotation_speed*delta, turret_rotation_speed*delta)
 func control(delta: float):
