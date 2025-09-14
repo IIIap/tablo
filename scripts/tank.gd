@@ -3,9 +3,20 @@ extends CharacterBody2D
 @export var backward_multiplier = 0.7
 @export var health = 6.0
 @export var turret_timer = 0.4
+@export var flash_timer = 0.1
 @export var turret_rotation_speed = 5.00
 @export var can_shoot = true
 @export var projectile_scene : PackedScene
+
+@onready var flash_shader = load("res://shaders/hitFlashEffect.gdshader")
+@onready var tank_sprites = get_tree().get_nodes_in_group("tankSprites")
+
+
+func _on_flash_timer_timeout() -> void:
+	for sprite in tank_sprites:
+		if is_instance_valid(sprite):
+			
+			sprite.material.set_shader_parameter("flash_modifier", 0.0)
 
 func _on_turret_timer_timeout() -> void:
 	can_shoot = true
@@ -13,9 +24,17 @@ func _on_turret_timer_timeout() -> void:
 func _ready() -> void:
 	pass
 
+func flash():
+	$FlashTimer.start(flash_timer)
+	for sprite in tank_sprites:
+		if is_instance_valid(sprite):
+			sprite.material.shader = flash_shader
+			sprite.material.set_shader_parameter("flash_modifier", 0.5)
 func take_damage(amount: float):
 	health -= amount
-	if health <=0:
+	if health > 0:
+		flash()
+	else:
 		die()
 		
 func turret(delta: float):
@@ -26,6 +45,8 @@ func control(delta: float):
 	
 func shoot():
 	if can_shoot and is_instance_valid(projectile_scene):
+		$SFXShot.pitch_scale = randf_range(0.8, 1.2)
+		$SFXShot.play()
 		can_shoot = false
 		$TurretTimer.start(turret_timer)
 		var projectile_instance = projectile_scene.instantiate()

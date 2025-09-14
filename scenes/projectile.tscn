@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dypr6u7mskxcj"]
+[gd_scene load_steps=5 format=3 uid="uid://dypr6u7mskxcj"]
 
 [ext_resource type="Script" uid="uid://dwy77nqyn06xm" path="res://scripts/projectile.gd" id="1_q3m7n"]
-[ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/Spritesheet/sheet_tanks.png" id="2_q3m7n"]
+[ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="2_q3m7n"]
+[ext_resource type="AudioStream" uid="uid://c7ohd6gku68yi" path="res://assets/sfx/hit.wav" id="3_softn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_softn"]
 size = Vector2(25, 16)
@@ -22,6 +23,9 @@ shape = SubResource("RectangleShape2D_softn")
 
 [node name="LifeTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SFXHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_softn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

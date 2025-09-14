@@ -1,10 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://dii3cmd0dntkw"]
+[gd_scene load_steps=8 format=3 uid="uid://dii3cmd0dntkw"]
 
 [ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_aa236"]
 [ext_resource type="Script" uid="uid://b3ty7ncxb4njo" path="res://scripts/enemyTank.gd" id="2_ua1er"]
 [ext_resource type="PackedScene" uid="uid://wqb31o7ls56b" path="res://scenes/enemyProjectile.tscn" id="3_yx8xe"]
 
+[sub_resource type="Shader" id="Shader_yx8xe"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: source_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	 vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_016um"]
+resource_local_to_scene = true
+shader = SubResource("Shader_yx8xe")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="Shader" id="Shader_016um"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: source_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	 vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5k74e"]
+resource_local_to_scene = true
+shader = SubResource("Shader_016um")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
 [node name="EnemyTank" instance=ExtResource("1_aa236")]
+material = SubResource("ShaderMaterial_016um")
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("2_ua1er")
@@ -15,4 +54,5 @@ projectile_scene = ExtResource("3_yx8xe")
 region_rect = Rect2(356, 506, 78, 82)
 
 [node name="Turret" parent="." index="3"]
+material = SubResource("ShaderMaterial_5k74e")
 region_rect = Rect2(404, 851, 49, 14)
