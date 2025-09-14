@@ -9,14 +9,12 @@ extends CharacterBody2D
 @export var projectile_scene : PackedScene
 
 @onready var flash_shader = load("res://shaders/hitFlashEffect.gdshader")
-@onready var tank_sprites = get_tree().get_nodes_in_group("tankSprites")
 
 
 func _on_flash_timer_timeout() -> void:
-	for sprite in tank_sprites:
-		if is_instance_valid(sprite):
-			
-			sprite.material.set_shader_parameter("flash_modifier", 0.0)
+	for child in get_children():
+		if is_instance_valid(child) and child is Sprite2D:
+			child.material.set_shader_parameter("flash_modifier", 0.0)
 
 func _on_turret_timer_timeout() -> void:
 	can_shoot = true
@@ -26,10 +24,12 @@ func _ready() -> void:
 
 func flash():
 	$FlashTimer.start(flash_timer)
-	for sprite in tank_sprites:
-		if is_instance_valid(sprite):
-			sprite.material.shader = flash_shader
-			sprite.material.set_shader_parameter("flash_modifier", 0.5)
+	for child in get_children():
+		if is_instance_valid(child) and child is Sprite2D:
+			var flash_material = ShaderMaterial.new()
+			flash_material.shader = flash_shader.duplicate()
+			child.material = flash_material
+			child.material.set_shader_parameter("flash_modifier", 0.5)
 func take_damage(amount: float):
 	health -= amount
 	if health > 0:
