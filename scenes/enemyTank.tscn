@@ -56,3 +56,18 @@ region_rect = Rect2(356, 506, 78, 82)
 [node name="Turret" parent="." index="3"]
 material = SubResource("ShaderMaterial_5k74e")
 region_rect = Rect2(404, 851, 49, 14)
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." index="7"]
+path_desired_distance = 292.7
+target_desired_distance = 302.9
+path_postprocessing = 2
+simplify_path = true
+avoidance_enabled = true
+radius = 70.0
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="." index="8"]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]

@@ -8,6 +8,7 @@ const MAX_HEALTH = 6.0
 @export var turret_timer = 0.4
 @export var flash_timer = 0.1
 @export var turret_rotation_speed = 5.00
+@export var body_rotation_speed = 2.00
 @export var can_shoot = true
 @export var projectile_scene : PackedScene
 

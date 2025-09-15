@@ -7,7 +7,6 @@ func update_healtbar(value):
 
 func _on_player_tank_health_changed(health: float) -> void:
 	update_healtbar(health)
-	pass
 
 
 func _on_player_tank_max_health(max_health: float) -> void:
