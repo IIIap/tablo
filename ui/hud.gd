@@ -1,7 +1,12 @@
 extends CanvasLayer
-var max : float
+var maxh : float
+
+func _ready() -> void:
+	Input.set_custom_mouse_cursor(load("res://assets/textures/UI/crossair_black.png"))
+
+
 func update_healtbar(value):
-	$MarginContainer/HBoxContainer/TextureProgressBar.value = (value / max) * 100
+	$MarginContainer/HBoxContainer/TextureProgressBar.value = (value / maxh) * 100
 	
 
 
@@ -10,4 +15,4 @@ func _on_player_tank_health_changed(health: float) -> void:
 
 
 func _on_player_tank_max_health(max_health: float) -> void:
-	max = max_health
+	maxh = max_health

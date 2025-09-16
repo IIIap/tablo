@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://hqlgolmy2o8i"]
+[gd_scene load_steps=6 format=3 uid="uid://hqlgolmy2o8i"]
 
 [ext_resource type="Script" uid="uid://dy1s0hpux2nxq" path="res://scripts/tank.gd" id="1_qrxud"]
 [ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="2_c4xvs"]
 [ext_resource type="AudioStream" uid="uid://p44co5cnpia0" path="res://assets/sfx/shoot.wav" id="3_01nm4"]
+[ext_resource type="Texture2D" uid="uid://627m0jap46jw" path="res://assets/textures/Smoke/smokeGrey0.png" id="4_k4vtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01nm4"]
 size = Vector2(70, 70)
@@ -19,6 +20,7 @@ region_enabled = true
 region_rect = Rect2(159, 573, 78, 82)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_01nm4")
 
@@ -43,6 +45,17 @@ stream = ExtResource("3_01nm4")
 
 [node name="FlashTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="MoveSmokeParticle" type="CPUParticles2D" parent="."]
+position = Vector2(-25, 0)
+rotation = 3.1415927
+amount = 2
+texture = ExtResource("4_k4vtj")
+lifetime = 0.25
+gravity = Vector2(0, 0)
+initial_velocity_max = 131.32
+scale_amount_min = 0.3
+scale_amount_max = 0.5
 
 [connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

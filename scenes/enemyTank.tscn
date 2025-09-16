@@ -58,6 +58,10 @@ region_rect = Rect2(356, 506, 78, 82)
 material = SubResource("ShaderMaterial_5k74e")
 region_rect = Rect2(404, 851, 49, 14)
 
+[node name="RayCast" type="RayCast2D" parent="Turret" index="1"]
+target_position = Vector2(500, 0)
+collision_mask = 3
+
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="7"]
 path_postprocessing = 1
 path_metadata_flags = 0
@@ -69,7 +73,9 @@ debug_enabled = true
 wait_time = 0.2
 autostart = true
 
-[node name="RayCast" type="RayCast2D" parent="." index="9"]
-target_position = Vector2(500, 0)
+[node name="RandDirTimer" type="Timer" parent="." index="9"]
+wait_time = 2.5
+autostart = true
 
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]
+[connection signal="timeout" from="RandDirTimer" to="." method="_on_rand_dir_timer_timeout"]

@@ -1,17 +1,18 @@
 extends "res://scripts/tank.gd"
 @onready var player = get_parent().get_node("PlayerTank")
 @export var chase = true
-
-
-func _ready() -> void:
-	$NavigationAgent.target_position = player.global_position
+var randvector : float = 0.0
 
 func shoot():
 	if chase:
 		super.shoot()
+		
 func turret(delta:float):
-	if player != null and chase:
-		$Turret.rotation = wrapf($Turret.rotation + clamp(wrapf(get_angle_to(player.global_position) - $Turret.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
+	if player != null: 
+		if chase:
+			$Turret.rotation = wrapf($Turret.rotation + clamp(wrapf(get_angle_to(player.global_position) - $Turret.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
+		else:
+			$Turret.rotation = wrapf($Turret.rotation + clamp(wrapf(randvector - $Turret.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
 
 func control(delta: float):
 	if chase:
@@ -22,8 +23,12 @@ func control(delta: float):
 		var dir = ($NavigationAgent.get_next_path_position() - global_position).normalized()
 		velocity = dir * speed
 	else:
-		chase = $RayCast.is_colliding()
+		chase = $Turret/RayCast.get_collider() == player
 
 func _on_navigation_timer_timeout() -> void:
 	if is_instance_valid(player):
 		$NavigationAgent.target_position = player.global_position
+
+
+func _on_rand_dir_timer_timeout() -> void:
+	randvector = randf_range(-PI, PI)

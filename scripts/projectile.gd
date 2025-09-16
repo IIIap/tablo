@@ -5,7 +5,10 @@ extends Area2D
 @export var lifeTime: float = 2.00
 
 func explode():
-	queue_free()
+	speed = 0
+	$Sprite.hide()
+	$Explosion.show()
+	$Explosion.play()
 
 func _on_body_entered(body: Node2D) -> void:
 	$SFXHit.play()
@@ -22,3 +25,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	position += transform.x * speed * delta
+
+
+
+func _on_explosion_animation_finished() -> void:
+	queue_free() # Replace with function body.

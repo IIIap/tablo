@@ -1,11 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://dypr6u7mskxcj"]
+[gd_scene load_steps=11 format=3 uid="uid://dypr6u7mskxcj"]
 
 [ext_resource type="Script" uid="uid://dwy77nqyn06xm" path="res://scripts/projectile.gd" id="1_q3m7n"]
 [ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="2_q3m7n"]
 [ext_resource type="AudioStream" uid="uid://c7ohd6gku68yi" path="res://assets/sfx/hit.wav" id="3_softn"]
+[ext_resource type="Texture2D" uid="uid://bbhe472xn7p1t" path="res://assets/textures/PNG/Retina/explosion1.png" id="4_6c2e5"]
+[ext_resource type="Texture2D" uid="uid://bsy7n31o21vpn" path="res://assets/textures/PNG/Retina/explosion2.png" id="5_pl1gp"]
+[ext_resource type="Texture2D" uid="uid://cdp5s7n405esn" path="res://assets/textures/PNG/Retina/explosion3.png" id="6_ejmht"]
+[ext_resource type="Texture2D" uid="uid://dfk3pd3f0muh1" path="res://assets/textures/PNG/Retina/explosion4.png" id="7_031o2"]
+[ext_resource type="Texture2D" uid="uid://b1ir53bqir1p4" path="res://assets/textures/PNG/Retina/explosion5.png" id="8_xo60o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_softn"]
 size = Vector2(25, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxgir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6c2e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pl1gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ejmht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_031o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xo60o")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Projectile" type="Area2D"]
 collision_layer = 0
@@ -22,10 +50,17 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_softn")
 
 [node name="LifeTimer" type="Timer" parent="."]
+wait_time = 0.75
 one_shot = true
 
 [node name="SFXHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_softn")
 
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_mxgir")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
