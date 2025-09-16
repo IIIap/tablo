@@ -132,3 +132,9 @@ tile_proxies/coords_level = [[0, Vector2i(0, 0)], [1, Vector2i(0, 0)], [0, Vecto
 [node name="TileMapLayer" type="TileMapLayer"]
 tile_set = SubResource("TileSet_o3fi6")
 script = ExtResource("2_okeva")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
