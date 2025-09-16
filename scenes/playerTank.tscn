@@ -27,7 +27,6 @@ shader_parameter/flash_modifier = 0.0
 material = SubResource("ShaderMaterial_sjs61")
 collision_layer = 1
 collision_mask = 6
-motion_mode = 1
 script = ExtResource("2_o2m8q")
 projectile_scene = ExtResource("3_sjs61")
 

@@ -47,6 +47,7 @@ material = SubResource("ShaderMaterial_016um")
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("2_ua1er")
+chase = false
 turret_timer = 0.6
 projectile_scene = ExtResource("3_yx8xe")
 
@@ -58,16 +59,17 @@ material = SubResource("ShaderMaterial_5k74e")
 region_rect = Rect2(404, 851, 49, 14)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="7"]
-path_desired_distance = 292.7
-target_desired_distance = 302.9
-path_postprocessing = 2
+path_postprocessing = 1
+path_metadata_flags = 0
 simplify_path = true
-avoidance_enabled = true
-radius = 70.0
+simplify_epsilon = 10.0
 debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="." index="8"]
 wait_time = 0.2
 autostart = true
+
+[node name="RayCast" type="RayCast2D" parent="." index="9"]
+target_position = Vector2(500, 0)
 
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]

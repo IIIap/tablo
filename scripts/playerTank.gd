@@ -18,8 +18,6 @@ func control(delta: float):
 		rotation += body_rotation_speed * delta
 	elif Input.is_action_pressed("left"):
 		rotation -= body_rotation_speed * delta
-	
-	
 	if Input.is_action_pressed("forward"):
 		velocity = Vector2(speed, 0).rotated(rotation)
 	elif Input.is_action_pressed("back"):
@@ -29,6 +27,3 @@ func control(delta: float):
 func shoot():
 	if Input.is_action_just_pressed("shoot"):
 		super.shoot()
-
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
