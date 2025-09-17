@@ -3,14 +3,15 @@ extends CharacterBody2D
 @export var speed: float = 900
 @export var damage: float = 1
 @export var lifeTime: float = 2.00
+@export var explosionEffect : PackedScene
 var direction : Vector2
 
 func explode():
-	queue_free()
-	#speed = 0
-	#$Sprite.hide()
-	#$Explosion.show()
-	#$Explosion.play()
+	$Projectile.set_deferred("monitoring", false)
+	speed = 0
+	$Sprite.hide()
+	$Explosion.show()
+	$Explosion.play()
 
 func _on_projectile_body_entered(body: Node2D) -> void:
 	$SFXHit.play()
@@ -37,5 +38,4 @@ func _process(delta: float) -> void:
 
 
 func _on_explosion_animation_finished() -> void:
-	pass
-	#queue_free() # Replace with function body.
+	queue_free() # Replace with function body.
