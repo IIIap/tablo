@@ -27,3 +27,7 @@ func control(delta: float):
 func shoot():
 	if Input.is_action_just_pressed("shoot"):
 		super.shoot()
+
+
+func die():
+	get_tree().reload_current_scene()

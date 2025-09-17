@@ -61,6 +61,7 @@ func shoot():
 func die():
 	queue_free()
 	
+	
 func _physics_process(delta: float) -> void:
 	turret(delta)
 	control(delta)

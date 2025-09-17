@@ -19,9 +19,10 @@ func _on_body_entered(body: Node2D) -> void:
 			body.take_damage(damage, body.local_to_map(global_position))#emit_signal("get_cell_vector", body.local_to_map(global_position))
 		else:
 			body.take_damage(damage)
-			
+
 func _on_life_timer_timeout() -> void:
 	explode()
+
 
 func _ready() -> void:
 	$LifeTimer.wait_time = lifeTime
