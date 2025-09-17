@@ -7,3 +7,16 @@
 collision_layer = 16
 collision_mask = 6
 script = ExtResource("2_h1u43")
+speed = 300
+backward_multiplier = 0.7
+health = 6.0
+turret_timer = 0.4
+flash_timer = 0.1
+turret_rotation_speed = 5.0
+body_rotation_speed = 2.0
+can_shoot = true
+projectile_scene = null
+
+[node name="Projectile" parent="." index="0"]
+collision_layer = 16
+collision_mask = 6
