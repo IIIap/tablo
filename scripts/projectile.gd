@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 1200
+@export var speed: float = 900
 @export var damage: float = 1
 @export var lifeTime: float = 2.00
 var direction : Vector2
@@ -16,6 +16,7 @@ func _on_projectile_body_entered(body: Node2D) -> void:
 	$SFXHit.play()
 	if body.has_method("take_damage"):
 		if body is TileMapLayer:
+			print(global_position)
 			body.take_damage(damage, body.local_to_map(global_position))
 		else:
 			body.take_damage(damage)
