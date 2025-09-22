@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
-const MAX_HEALTH = 6.0
-
+@export var MAX_HEALTH = 6.0
 @export var speed = 300
 @export var backward_multiplier = 0.7
-@export var health = MAX_HEALTH
 @export var turret_timer = 0.4
 @export var flash_timer = 0.1
 @export var turret_rotation_speed = 5.00
@@ -13,7 +11,7 @@ const MAX_HEALTH = 6.0
 @export var projectile_scene : PackedScene
 
 @onready var flash_shader = load("res://shaders/hitFlashEffect.gdshader")
-
+var health : float
 
 func _on_flash_timer_timeout() -> void:
 	for child in get_children():
@@ -24,7 +22,7 @@ func _on_turret_timer_timeout() -> void:
 	can_shoot = true
 	
 func _ready() -> void:
-	pass
+	health = MAX_HEALTH
 
 func flash():
 	$FlashTimer.start(flash_timer)

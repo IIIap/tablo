@@ -20,8 +20,11 @@ func control(delta: float):
 		if direction_to_next_point.length() > 0:
 			var target_rotation = atan2(direction_to_next_point.y, direction_to_next_point.x)
 			rotation = move_toward(rotation, target_rotation, body_rotation_speed * delta)
-		var dir = ($NavigationAgent.get_next_path_position() - global_position).normalized()
-		velocity = dir * speed
+		if (global_position - player.global_position).length() > 250:
+			var dir = ($NavigationAgent.get_next_path_position() - global_position).normalized()
+			velocity = dir * speed
+		else:
+			velocity = Vector2.ZERO
 	else:
 		chase = $Turret/RayCast.get_collider() == player
 
@@ -32,3 +35,12 @@ func _on_navigation_timer_timeout() -> void:
 
 func _on_rand_dir_timer_timeout() -> void:
 	randvector = randf_range(-PI, PI)
+
+
+
+
+func _on_detect_area_body_entered(body: Node2D) -> void:
+	if body == player:
+		chase = true
+		$DetectArea.set_deferred("monitoring", false)
+		$DetectArea.set_deferred("monitorable", false) # Replace with function body.

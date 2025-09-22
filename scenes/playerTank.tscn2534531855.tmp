@@ -28,7 +28,6 @@ material = SubResource("ShaderMaterial_sjs61")
 collision_layer = 1
 collision_mask = 6
 script = ExtResource("2_o2m8q")
-MAX_HEALTH = 25.0
 projectile_scene = ExtResource("3_sjs61")
 
 [node name="Marker" parent="Turret" index="0"]
