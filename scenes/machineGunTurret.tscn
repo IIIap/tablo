@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://0ofn6yncsbi2"]
+
+[ext_resource type="PackedScene" uid="uid://chv6e88qeiib7" path="res://scenes/baseTurret.tscn" id="1_kpvb4"]
+[ext_resource type="Script" uid="uid://dltr112spgjgg" path="res://scripts/machineGunTurret.gd" id="2_kpvb4"]
+
+[node name="MachineGunTurret" instance=ExtResource("1_kpvb4")]
+script = ExtResource("2_kpvb4")
+turret_timer = 0.15

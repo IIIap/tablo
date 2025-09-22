@@ -3,16 +3,20 @@ extends "res://scripts/tank.gd"
 @export var chase = true
 var randvector : float = 0.0
 
+enum turretSet {
+	BASE, MACHINEGUN
+}
+
 func shoot():
 	if chase:
-		super.shoot()
+		$TurretMount.shoot()
 		
-func turret(delta:float):
+func rotate_turret(delta:float):
 	if player != null: 
 		if chase:
-			$Turret.rotation = wrapf($Turret.rotation + clamp(wrapf(get_angle_to(player.global_position) - $Turret.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
+			$TurretMount.rotation = wrapf($TurretMount.rotation + clamp(wrapf(get_angle_to(player.global_position) - $TurretMount.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
 		else:
-			$Turret.rotation = wrapf($Turret.rotation + clamp(wrapf(randvector - $Turret.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
+			$TurretMount.rotation = wrapf($TurretMount.rotation + clamp(wrapf(randvector - $TurretMount.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
 
 func control(delta: float):
 	if chase:
@@ -26,7 +30,7 @@ func control(delta: float):
 		else:
 			velocity = Vector2.ZERO
 	else:
-		chase = $Turret/RayCast.get_collider() == player
+		chase = $TurretRayCast.get_collider() == player
 
 func _on_navigation_timer_timeout() -> void:
 	if is_instance_valid(player):
@@ -43,4 +47,4 @@ func _on_detect_area_body_entered(body: Node2D) -> void:
 	if body == player:
 		chase = true
 		$DetectArea.set_deferred("monitoring", false)
-		$DetectArea.set_deferred("monitorable", false) # Replace with function body.
+		$DetectArea.set_deferred("monitorable", false)

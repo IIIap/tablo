@@ -1,15 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://chv6e88qeiib7"]
+[gd_scene load_steps=5 format=3 uid="uid://chv6e88qeiib7"]
 
+[ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="1_jkfvi"]
 [ext_resource type="Script" uid="uid://cokn2su8tqiqi" path="res://scripts/baseTurret.gd" id="1_u6lnc"]
+[ext_resource type="AudioStream" uid="uid://p44co5cnpia0" path="res://assets/sfx/shoot.wav" id="2_d4rxg"]
+[ext_resource type="PackedScene" uid="uid://3h8u3dbmh1d7" path="res://scenes/playerProjectile.tscn" id="3_tywge"]
 
 [node name="BaseTurret" type="Sprite2D"]
+texture = ExtResource("1_jkfvi")
 offset = Vector2(20, 0)
+region_enabled = true
+region_rect = Rect2(404, 835, 50, 14)
 script = ExtResource("1_u6lnc")
+projectile_scene = ExtResource("3_tywge")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Marker" type="Marker2D" parent="."]
+position = Vector2(50, 0)
 
 [node name="SFXShoot" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("2_d4rxg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
