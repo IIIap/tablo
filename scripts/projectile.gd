@@ -8,6 +8,7 @@ var direction : Vector2
 
 func explode():
 	$Projectile.set_deferred("monitoring", false)
+	$Projectile.set_deferred("monitorable", false)
 	speed = 0
 	$Sprite.hide()
 	$Explosion.show()

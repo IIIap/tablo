@@ -11,8 +11,7 @@ func take_damage(amount: float):
 	super.take_damage(amount)
 	emit_signal("health_changed", health)
 	
-func turret(delta: float):
-	$Turret.rotation = wrapf($Turret.rotation + clamp(wrapf(get_angle_to(get_global_mouse_position()) - $Turret.rotation, -PI, PI), -turret_rotation_speed * delta, turret_rotation_speed * delta), -PI, PI)
+
 func control(delta: float):
 	if Input.is_action_pressed("right"):
 		rotation += body_rotation_speed * delta

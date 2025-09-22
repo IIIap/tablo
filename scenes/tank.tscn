@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dy1s0hpux2nxq" path="res://scripts/tank.gd" id="1_qrxud"]
 [ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="2_c4xvs"]
-[ext_resource type="AudioStream" uid="uid://p44co5cnpia0" path="res://assets/sfx/shoot.wav" id="3_01nm4"]
 [ext_resource type="Texture2D" uid="uid://627m0jap46jw" path="res://assets/textures/Smoke/smokeGrey0.png" id="4_k4vtj"]
+[ext_resource type="PackedScene" uid="uid://chv6e88qeiib7" path="res://scenes/baseTurret.tscn" id="4_lj6hj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01nm4"]
 size = Vector2(70, 70)
@@ -13,6 +13,14 @@ collision_layer = 0
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_qrxud")
+MAX_HEALTH = null
+speed = null
+backward_multiplier = null
+turret_timer = null
+flash_timer = null
+turret_rotation_speed = null
+body_rotation_speed = null
+can_shoot = null
 
 [node name="Body" type="Sprite2D" parent="." groups=["tankSprites"]]
 texture = ExtResource("2_c4xvs")
@@ -28,21 +36,6 @@ shape = SubResource("RectangleShape2D_01nm4")
 
 [node name="Collision" type="CollisionShape2D" parent="HurtBox"]
 
-[node name="Turret" type="Sprite2D" parent="." groups=["tankSprites"]]
-texture = ExtResource("2_c4xvs")
-offset = Vector2(20, 0)
-region_enabled = true
-region_rect = Rect2(404, 835, 50, 14)
-
-[node name="Marker" type="Marker2D" parent="Turret"]
-position = Vector2(47, 0)
-
-[node name="TurretTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="SFXShot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_01nm4")
-
 [node name="FlashTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -57,5 +50,9 @@ initial_velocity_max = 131.32
 scale_amount_min = 0.3
 scale_amount_max = 0.5
 
-[connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
+[node name="BaseTurret" parent="." instance=ExtResource("4_lj6hj")]
+texture = ExtResource("2_c4xvs")
+region_enabled = true
+region_rect = Rect2(404, 835, 50, 14)
+
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
