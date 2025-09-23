@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://blo0hrobmrn2c"]
+
+[ext_resource type="PackedScene" uid="uid://dii3cmd0dntkw" path="res://scenes/enemyTank.tscn" id="1_jl468"]
+[ext_resource type="PackedScene" uid="uid://chv6e88qeiib7" path="res://scenes/baseTurret.tscn" id="2_u2g2o"]
+[ext_resource type="PackedScene" uid="uid://28ikrjaw1dnj" path="res://scenes/baseEnemyProjectile.tscn" id="3_u2g2o"]
+
+[sub_resource type="Shader" id="Shader_tl2yx"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: source_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	 vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2g2o"]
+resource_local_to_scene = true
+shader = SubResource("Shader_tl2yx")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[node name="baseEnemyTank" instance=ExtResource("1_jl468")]
+material = SubResource("ShaderMaterial_u2g2o")
+
+[node name="BaseTurret" parent="TurretMount" index="0" instance=ExtResource("2_u2g2o")]
+region_rect = Rect2(404, 851, 50, 14)
+projectile_scene = ExtResource("3_u2g2o")

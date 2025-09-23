@@ -3,13 +3,9 @@ extends "res://scripts/tank.gd"
 @export var chase = true
 var randvector : float = 0.0
 
-enum turret_set {
-	BASE = 0, MACHINEGUN
-}
-
 func shoot():
 	if chase:
-		$TurretMount.shoot()
+		$TurretMount.get_child(0).shoot()
 		
 func rotate_turret(delta:float):
 	if player != null: 
