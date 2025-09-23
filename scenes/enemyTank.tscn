@@ -42,10 +42,6 @@ region_rect = Rect2(356, 506, 78, 82)
 target_position = Vector2(500, 0)
 collision_mask = 3
 
-[node name="BaseTurret" parent="." index="6"]
-region_rect = Rect2(404, 851, 50, 14)
-projectile_scene = ExtResource("3_yx8xe")
-
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="7"]
 path_postprocessing = 1
 path_metadata_flags = 0

@@ -3,8 +3,8 @@ extends "res://scripts/tank.gd"
 @export var chase = true
 var randvector : float = 0.0
 
-enum turretSet {
-	BASE, MACHINEGUN
+enum turret_set {
+	BASE = 0, MACHINEGUN
 }
 
 func shoot():

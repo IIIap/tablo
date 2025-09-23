@@ -6,9 +6,6 @@ var tile_health: Dictionary = {}  # Словарь для хранения зд�
 func take_damage(amount: float, cell_vector: Vector2) -> void:
 	if get_cell_tile_data(cell_vector) != null and get_cell_tile_data(cell_vector).get_custom_data("health") > 0.0:
 		print("Наносимый урон: ", amount, "; Vector2: ", cell_vector)
-		if get_cell_tile_data(cell_vector) == null:
-			print("Тайла нет в ячейке: ", cell_vector)
-			return
 		var current_health: float
 		if tile_health.has(cell_vector):
 			current_health = tile_health[cell_vector]

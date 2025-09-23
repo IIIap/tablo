@@ -1,8 +1,28 @@
-[gd_scene load_steps=4 format=4 uid="uid://81116yweiywa"]
+[gd_scene load_steps=7 format=4 uid="uid://81116yweiywa"]
 
 [ext_resource type="PackedScene" uid="uid://fd4mywr87lmh" path="res://scenes/playerTank.tscn" id="1_32cxx"]
 [ext_resource type="PackedScene" uid="uid://daf0ccf1ketnd" path="res://scenes/tile_map_layer.tscn" id="3_dylta"]
+[ext_resource type="PackedScene" uid="uid://dii3cmd0dntkw" path="res://scenes/enemyTank.tscn" id="4_fwly5"]
 [ext_resource type="PackedScene" uid="uid://bdmw645fp1adj" path="res://ui/hud.tscn" id="4_q85tm"]
+
+[sub_resource type="Shader" id="Shader_xkbh3"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: source_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	 vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mulil"]
+resource_local_to_scene = true
+shader = SubResource("Shader_xkbh3")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [node name="Gamescene" type="Node2D"]
 
@@ -15,6 +35,10 @@ tile_map_data = PackedByteArray("AAD+//7/AgAAAAAAAAD+//3/AgAAAAAAAAD9//3/AgAAAAA
 material = null
 position = Vector2(61, -111)
 collision_mask = 1
+
+[node name="EnemyTank" parent="." instance=ExtResource("4_fwly5")]
+material = SubResource("ShaderMaterial_mulil")
+position = Vector2(597, -96)
 
 [connection signal="health_changed" from="PlayerTank" to="HUD" method="_on_player_tank_health_changed"]
 [connection signal="max_health" from="PlayerTank" to="HUD" method="_on_player_tank_max_health"]
