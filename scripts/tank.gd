@@ -48,6 +48,7 @@ func die():
 	
 	
 func _physics_process(delta: float) -> void:
+	$GroundTrailParticle.emitting = velocity.length()
 	rotate_turret(delta)
 	control(delta)
 	shoot()

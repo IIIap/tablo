@@ -29,11 +29,17 @@ radius = 90.0
 material = SubResource("ShaderMaterial_h7h5r")
 script = ExtResource("2_fmucr")
 explosion_damage = 5.0
-chase = true
 speed = 250
 projectile_scene = null
 
-[node name="Collision" parent="." index="2"]
+[node name="GroundTrailParticle" parent="." index="0"]
+particle_flag_align_y = false
+
+[node name="Body" parent="." index="2"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Collision" parent="." index="3"]
 visible = true
 
 [node name="Collision" parent="DetectArea" index="0"]
