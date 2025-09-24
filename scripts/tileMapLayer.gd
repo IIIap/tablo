@@ -1,7 +1,7 @@
 extends TileMapLayer
 
-@onready var flash_shader = preload("res://shaders/hitFlashEffect.gdshader") # Используйте preload, если шейдер не меняется
-var tile_health: Dictionary = {}  # Словарь для хранения здоровья тайлов (Vector2: float)
+@onready var flash_shader = preload("res://shaders/hitFlashEffect.gdshader") 
+var tile_health: Dictionary = {}
 
 func take_damage(amount: float, cell_vector: Vector2) -> void:
 	if get_cell_tile_data(cell_vector) != null and get_cell_tile_data(cell_vector).get_custom_data("health") > 0.0:
@@ -20,6 +20,5 @@ func take_damage(amount: float, cell_vector: Vector2) -> void:
 		print("Новое здоровье тайла: ", current_health)
 
 		if current_health <= 0:
-			print("Тайл уничтожен!")
 			set_cell(cell_vector, 2, Vector2(2, 0), 0)
 			tile_health.erase(cell_vector)

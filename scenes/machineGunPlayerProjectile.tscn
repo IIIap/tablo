@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://chovkadt1eyxc"]
+
+[ext_resource type="PackedScene" uid="uid://3h8u3dbmh1d7" path="res://scenes/playerProjectile.tscn" id="1_6df2b"]
+
+[node name="MachineGunPlayerProjectile" instance=ExtResource("1_6df2b")]
+scale = Vector2(0.5, 0.5)
+damage = 0.5
+lifeTime = 0.5

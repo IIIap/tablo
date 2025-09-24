@@ -18,7 +18,6 @@ func _on_projectile_body_entered(body: Node2D) -> void:
 	$SFXHit.play()
 	if body.has_method("take_damage"):
 		if body is TileMapLayer:
-			print(global_position)
 			body.take_damage(damage, body.local_to_map(global_position))
 		else:
 			body.take_damage(damage)

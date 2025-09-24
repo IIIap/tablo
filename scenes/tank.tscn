@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hqlgolmy2o8i"]
+[gd_scene load_steps=6 format=3 uid="uid://hqlgolmy2o8i"]
 
 [ext_resource type="Script" uid="uid://dy1s0hpux2nxq" path="res://scripts/tank.gd" id="1_qrxud"]
 [ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="2_c4xvs"]
+[ext_resource type="Texture2D" uid="uid://c4u6bgvqulhvn" path="res://assets/textures/PNG/Retina/tracksSmall.png" id="2_k4vtj"]
 [ext_resource type="Texture2D" uid="uid://627m0jap46jw" path="res://assets/textures/Smoke/smokeGrey0.png" id="4_k4vtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01nm4"]
@@ -12,6 +13,13 @@ collision_layer = 0
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_qrxud")
+
+[node name="GroundTrailParticle" type="CPUParticles2D" parent="."]
+amount = 4
+texture = ExtResource("2_k4vtj")
+lifetime = 0.5
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
 
 [node name="Body" type="Sprite2D" parent="." groups=["tankSprites"]]
 texture = ExtResource("2_c4xvs")
@@ -30,7 +38,7 @@ shape = SubResource("RectangleShape2D_01nm4")
 [node name="FlashTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="MoveSmokeParticle" type="CPUParticles2D" parent="."]
+[node name="EngineSmokeParticle" type="CPUParticles2D" parent="."]
 position = Vector2(-25, 0)
 rotation = 3.1415927
 amount = 2

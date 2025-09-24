@@ -29,7 +29,6 @@ func set_turret(turret_index: int):
 			$TurretMount.add_child(current_turret)
 
 func control(delta: float):
-	print(current_turret)
 	if Input.is_action_just_pressed("baseTurret"):
 		set_turret(0)
 	elif Input.is_action_just_pressed("machineGunTurret"):

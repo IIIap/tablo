@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4g8thce1tihg"]
+
+[ext_resource type="PackedScene" uid="uid://dii3cmd0dntkw" path="res://scenes/enemyTank.tscn" id="1_pagly"]
+[ext_resource type="Script" uid="uid://g66auf43b7q2" path="res://scripts/daredevilEnemyTank.gd" id="2_fmucr"]
+
+[sub_resource type="Shader" id="Shader_fmucr"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: source_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	 vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h7h5r"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fmucr")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmucr"]
+radius = 90.0
+
+[node name="DaredevilEnemyTank" instance=ExtResource("1_pagly")]
+material = SubResource("ShaderMaterial_h7h5r")
+script = ExtResource("2_fmucr")
+explosion_damage = 5.0
+chase = true
+speed = 250
+projectile_scene = null
+
+[node name="Collision" parent="." index="2"]
+visible = true
+
+[node name="Collision" parent="DetectArea" index="0"]
+visible = false
+
+[node name="KaboomArea" type="Area2D" parent="." index="11"]
+
+[node name="Collision" type="CollisionShape2D" parent="KaboomArea" index="0"]
+shape = SubResource("CircleShape2D_fmucr")
+
+[connection signal="body_entered" from="KaboomArea" to="." method="_on_kaboom_area_body_entered"]
