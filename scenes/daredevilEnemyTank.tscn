@@ -23,12 +23,13 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmucr"]
-radius = 90.0
+radius = 200.0
 
 [node name="DaredevilEnemyTank" instance=ExtResource("1_pagly")]
 material = SubResource("ShaderMaterial_h7h5r")
 script = ExtResource("2_fmucr")
-explosion_damage = 5.0
+expl_damage = 4.0
+chase = true
 speed = 250
 projectile_scene = null
 

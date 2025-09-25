@@ -1,6 +1,7 @@
 extends "res://scripts/enemyTank.gd"
 
-@export var explosion_damage = 3.00
+@export var expl_damage :float = 4.0
+
 
 func shoot():
 	pass
@@ -35,7 +36,7 @@ func _on_kaboom_area_body_entered(body: Node2D) -> void:
 						var cell_position = object.map_to_local(cell) + object.global_position
 						if global_position.distance_to(cell_position) <= $KaboomArea/Collision.shape.radius:
 							print(object.local_to_map(cell_position)) 
-							object.take_damage(explosion_damage, object.local_to_map(cell_position))
+							object.take_damage(expl_damage, object.local_to_map(cell_position))
 				else:
-					object.take_damage(explosion_damage)
+					object.take_damage(expl_damage)
 		queue_free()
