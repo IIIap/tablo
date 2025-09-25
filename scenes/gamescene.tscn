@@ -40,4 +40,5 @@ collision_mask = 1
 material = SubResource("ShaderMaterial_fwly5")
 position = Vector2(239, -461)
 
+[connection signal="health_changed" from="PlayerTank" to="HUD" method="_on_player_tank_health_changed"]
 [connection signal="max_health" from="PlayerTank" to="HUD" method="_on_player_tank_max_health"]
