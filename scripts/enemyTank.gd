@@ -6,7 +6,11 @@ var randvector : float = 0.0
 func shoot():
 	if chase:
 		$TurretMount.get_child(0).shoot()
-		
+
+func take_damage(amount: float):
+	super.take_damage(amount)
+	chase = true
+
 func rotate_turret(delta:float):
 	if player != null: 
 		if chase:

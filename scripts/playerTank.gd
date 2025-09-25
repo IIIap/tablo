@@ -1,6 +1,5 @@
 extends "res://scripts/tank.gd"
 
-signal health_changed(health: float)
 signal max_health(max_health: float)
 
 @export var turret_slots: Array[PackedScene]

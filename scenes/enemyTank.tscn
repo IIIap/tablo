@@ -43,6 +43,7 @@ target_position = Vector2(500, 0)
 collision_mask = 3
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="7"]
+path_postprocessing = 1
 path_metadata_flags = 0
 simplify_path = true
 simplify_epsilon = 10.0

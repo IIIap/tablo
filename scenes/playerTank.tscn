@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://fd4mywr87lmh"]
+[gd_scene load_steps=9 format=3 uid="uid://fd4mywr87lmh"]
 
 [ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_6jfsc"]
 [ext_resource type="Script" uid="uid://bossl16tipdwi" path="res://scripts/playerTank.gd" id="2_o2m8q"]
 [ext_resource type="PackedScene" uid="uid://3h8u3dbmh1d7" path="res://scenes/playerProjectile.tscn" id="3_sjs61"]
 [ext_resource type="PackedScene" uid="uid://chv6e88qeiib7" path="res://scenes/baseTurret.tscn" id="3_w231l"]
 [ext_resource type="PackedScene" uid="uid://0ofn6yncsbi2" path="res://scenes/machineGunTurret.tscn" id="4_77gus"]
+[ext_resource type="Script" uid="uid://lhal1kwy2r6k" path="res://scripts/camera.gd" id="6_77gus"]
 
 [sub_resource type="Shader" id="Shader_xegq3"]
 resource_local_to_scene = true
@@ -34,3 +35,4 @@ turret_slots = Array[PackedScene]([ExtResource("3_w231l"), ExtResource("4_77gus"
 projectile_scene = ExtResource("3_sjs61")
 
 [node name="Camera" type="Camera2D" parent="." index="5"]
+script = ExtResource("6_77gus")
