@@ -27,6 +27,7 @@ func flash():
 			flash_material.shader = flash_shader.duplicate()
 			child.material = flash_material
 			child.material.set_shader_parameter("flash_modifier", 0.5)
+			print(child.material.get_shader_parameter("flash_modifier"))
 func take_damage(amount: float):
 	health -= amount
 	if health > 0:
