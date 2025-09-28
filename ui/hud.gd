@@ -6,7 +6,7 @@ func _ready() -> void:
 
 
 func update_healtbar(value):
-	$MarginContainer/HBoxContainer/TextureProgressBar.value = (value / maxh) * 100
+	$MarginContainer/HBoxContainer/Health.value = (value / maxh) * 100
 	
 
 

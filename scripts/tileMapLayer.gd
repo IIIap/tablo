@@ -3,7 +3,7 @@ extends TileMapLayer
 @onready var flash_shader = preload("res://shaders/hitFlashEffect.gdshader") 
 var tile_health: Dictionary = {}
 
-func take_damage(amount: float, cell_vector: Vector2) -> void:
+func take_damage(amount: float, cell_vector: Vector2i) -> void:
 	if get_cell_tile_data(cell_vector) != null and get_cell_tile_data(cell_vector).get_custom_data("health") > 0.0:
 		print("Наносимый урон: ", amount, "; Vector2: ", cell_vector)
 		var current_health: float
@@ -25,7 +25,7 @@ func take_damage(amount: float, cell_vector: Vector2) -> void:
 		else:
 			flash(cell_vector)
 
-func flash(cell_vector: Vector2):
+func flash(cell_vector: Vector2i):
 	var shader_sprite = Sprite2D.new()
 	shader_sprite.position = map_to_local(cell_vector)
 	shader_sprite.texture = get_cell_texture(cell_vector)

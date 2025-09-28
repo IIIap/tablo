@@ -21,8 +21,15 @@ theme_override_constants/margin_bottom = 20
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+[node name="Health" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 value = 100.0
+texture_over = ExtResource("3_1v5rv")
+texture_progress = ExtResource("4_q43x7")
+
+[node name="Reload" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+value = 1.0
 texture_over = ExtResource("3_1v5rv")
 texture_progress = ExtResource("4_q43x7")

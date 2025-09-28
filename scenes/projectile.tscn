@@ -88,7 +88,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Projectile"]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_softn")
 
 [node name="LifeTimer" type="Timer" parent="."]

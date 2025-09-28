@@ -7,6 +7,7 @@ signal max_health(max_health: float)
 var current_turrent_index: int = 0
 var current_turret : Node2D
 
+
 func _ready() -> void:
 	super._ready()
 	emit_signal("max_health", MAX_HEALTH)

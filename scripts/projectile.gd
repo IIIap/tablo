@@ -15,6 +15,7 @@ func explode():
 	$Explosion.play()
 
 func _on_projectile_body_entered(body: Node2D) -> void:
+	#print(global_position, "; rot: ", rotation)
 	$SFXHit.play()
 	if body.has_method("take_damage"):
 		if body is TileMapLayer:
