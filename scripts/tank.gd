@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var backward_multiplier = 0.7
 @export var flash_timer = 0.1
 @export var body_rotation_speed = 2.00
-@export var projectile_scene : PackedScene
 @export var turret_rotation_speed = 5.00
 
 @onready var flash_shader = load("res://shaders/hitFlashEffect.gdshader")

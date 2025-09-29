@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_6jfsc"]
 [ext_resource type="Script" uid="uid://bossl16tipdwi" path="res://scripts/playerTank.gd" id="2_o2m8q"]
-[ext_resource type="PackedScene" uid="uid://3h8u3dbmh1d7" path="res://scenes/playerProjectile.tscn" id="3_sjs61"]
 [ext_resource type="PackedScene" uid="uid://chv6e88qeiib7" path="res://scenes/baseTurret.tscn" id="3_w231l"]
 [ext_resource type="PackedScene" uid="uid://0ofn6yncsbi2" path="res://scenes/machineGunTurret.tscn" id="4_77gus"]
+[ext_resource type="PackedScene" uid="uid://c0ur0yavqxh6w" path="res://scenes/ricochetTurret.tscn" id="5_1qmc8"]
 [ext_resource type="Script" uid="uid://b6cnckuvdw4jf" path="res://scripts/camera.gd" id="6_77gus"]
 [ext_resource type="PackedScene" uid="uid://bdmw645fp1adj" path="res://ui/hud.tscn" id="7_1qmc8"]
 
@@ -32,8 +32,7 @@ material = SubResource("ShaderMaterial_sjs61")
 collision_layer = 1
 collision_mask = 6
 script = ExtResource("2_o2m8q")
-turret_slots = Array[PackedScene]([ExtResource("3_w231l"), ExtResource("4_77gus")])
-projectile_scene = ExtResource("3_sjs61")
+turret_slots = Array[PackedScene]([ExtResource("3_w231l"), ExtResource("4_77gus"), ExtResource("5_1qmc8")])
 
 [node name="HUD" parent="." index="7" instance=ExtResource("7_1qmc8")]
 

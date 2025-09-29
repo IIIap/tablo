@@ -34,6 +34,8 @@ func control(delta: float):
 		set_turret(0)
 	elif Input.is_action_just_pressed("machineGunTurret"):
 		set_turret(1)
+	elif Input.is_action_just_pressed("ricochetTurret"):
+		set_turret(2)
 	if Input.is_action_pressed("right"):
 		rotation += body_rotation_speed * delta
 	elif Input.is_action_pressed("left"):

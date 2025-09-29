@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwvsx78421r27"]
+[gd_scene load_steps=5 format=3 uid="uid://bwvsx78421r27"]
 
 [ext_resource type="PackedScene" uid="uid://dii3cmd0dntkw" path="res://scenes/enemyTank.tscn" id="1_0ug60"]
 [ext_resource type="PackedScene" uid="uid://0ofn6yncsbi2" path="res://scenes/machineGunTurret.tscn" id="2_y8q50"]
-[ext_resource type="PackedScene" uid="uid://bxaeaeft55eh" path="res://scenes/machineGunEnemyProjectile.tscn" id="3_go4wg"]
 
 [sub_resource type="Shader" id="Shader_go4wg"]
 resource_local_to_scene = true
@@ -28,4 +27,3 @@ material = SubResource("ShaderMaterial_u1xdy")
 
 [node name="MachineGunTurret" parent="TurretMount" index="0" instance=ExtResource("2_y8q50")]
 region_rect = Rect2(404, 851, 50, 14)
-projectile_scene = ExtResource("3_go4wg")

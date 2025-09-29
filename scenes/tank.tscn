@@ -14,6 +14,14 @@ collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_qrxud")
 
+[node name="GroundTrailParticle" type="CPUParticles2D" parent="."]
+amount = 4
+texture = ExtResource("2_k4vtj")
+lifetime = 0.5
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+
 [node name="Body" type="Sprite2D" parent="." groups=["tankSprites"]]
 texture = ExtResource("2_c4xvs")
 region_enabled = true
@@ -43,13 +51,5 @@ scale_amount_min = 0.3
 scale_amount_max = 0.5
 
 [node name="TurretMount" type="Node2D" parent="."]
-
-[node name="GroundTrailParticle" type="CPUParticles2D" parent="."]
-amount = 4
-texture = ExtResource("2_k4vtj")
-lifetime = 0.5
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-gravity = Vector2(0, 0)
 
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

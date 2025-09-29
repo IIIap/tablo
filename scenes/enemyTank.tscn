@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://hqlgolmy2o8i" path="res://scenes/tank.tscn" id="1_aa236"]
 [ext_resource type="Script" uid="uid://b3ty7ncxb4njo" path="res://scripts/enemyTank.gd" id="2_ua1er"]
-[ext_resource type="PackedScene" uid="uid://wqb31o7ls56b" path="res://scenes/enemyProjectile.tscn" id="3_yx8xe"]
+[ext_resource type="PackedScene" uid="uid://dypr6u7mskxcj" path="res://scenes/projectile.tscn" id="3_yx8xe"]
 
 [sub_resource type="Shader" id="Shader_yx8xe"]
 resource_local_to_scene = true
@@ -35,12 +35,12 @@ chase = false
 speed = 200
 projectile_scene = ExtResource("3_yx8xe")
 
-[node name="Body" parent="." index="0"]
-region_rect = Rect2(356, 506, 78, 82)
-
 [node name="TurretRayCast" type="RayCast2D" parent="." index="1"]
 target_position = Vector2(500, 0)
 collision_mask = 3
+
+[node name="Body" parent="." index="2"]
+region_rect = Rect2(356, 506, 78, 82)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="7"]
 path_postprocessing = 1

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cn8ce761ksaai" path="res://assets/textures/Spritesheet/sheet_tanks.png" id="1_jkfvi"]
 [ext_resource type="Script" uid="uid://cokn2su8tqiqi" path="res://scripts/baseTurret.gd" id="1_u6lnc"]
 [ext_resource type="AudioStream" uid="uid://p44co5cnpia0" path="res://assets/sfx/shoot.wav" id="2_d4rxg"]
-[ext_resource type="PackedScene" uid="uid://ibvv8706wepv" path="res://scenes/basePlayerProjectile.tscn" id="3_jkfvi"]
+[ext_resource type="PackedScene" uid="uid://ibvv8706wepv" path="res://scenes/baseProjectile.tscn" id="3_jkfvi"]
 
 [node name="BaseTurret" type="Sprite2D"]
 texture = ExtResource("1_jkfvi")

@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ibvv8706wepv"]
-
-[ext_resource type="PackedScene" uid="uid://3h8u3dbmh1d7" path="res://scenes/playerProjectile.tscn" id="1_ekbwv"]
-
-[node name="BasePlayerProjectile" instance=ExtResource("1_ekbwv")]

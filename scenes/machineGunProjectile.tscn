@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wqmb8hcome82"]
+
+[ext_resource type="PackedScene" uid="uid://dypr6u7mskxcj" path="res://scenes/projectile.tscn" id="1_xp0x0"]
+
+[node name="MachigeGunProjectile" instance=ExtResource("1_xp0x0")]
+scale = Vector2(0.5, 0.5)

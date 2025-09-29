@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var damage: float = 1
 @export var lifeTime: float = 2.00
 @export var explosionEffect : PackedScene
-var direction : Vector2
 
 func explode():
 	$Projectile.set_deferred("monitoring", false)
